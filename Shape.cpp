@@ -15,12 +15,11 @@ void Shape::applyForce(sf::Vector2f f)
 	this->acceletarion_ += f;
 }
 
-void Shape::update(float dt)
+void Shape::update(sf::Time dt)
 {
 	// @TODO - Decrease acceleration aka add air resistance or related
 
-	this->velocity_ += this->acceletarion_ * dt;
-	this->shape_->move(this->velocity_ * dt);
+	this->velocity_ += this->acceletarion_ * dt.asSeconds();
+	this->shape_->move(this->velocity_ * dt.asSeconds());
 
-	this->acceletarion_ = { 0,0 };
 }

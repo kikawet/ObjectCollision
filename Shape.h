@@ -12,7 +12,7 @@ public:
 	const sf::FloatRect& getBounds();
 	const sf::Vector2f& getPosition();
 	virtual void applyForce(sf::Vector2f f);
-	virtual void update(float dt);
+	virtual void update(sf::Time dt);
 	virtual void show(sf::RenderWindow& rw) = 0;
 
 protected:
