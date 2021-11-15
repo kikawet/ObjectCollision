@@ -11,7 +11,7 @@ public:
 		std::shared_ptr<Node> next = nullptr;
 	};
 
-	SpatialHashEntity(std::shared_ptr<Shape>& s);
+	SpatialHashEntity(std::unique_ptr<Shape>& s);
 
 	inline void setTLIndex(const sf::Vector2i& index) { TLCell_ = index; };
 	inline const sf::Vector2i& getTLIndex() { return TLCell_; };

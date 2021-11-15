@@ -17,7 +17,6 @@ public:
 
 private:
 	sf::RenderWindow* rw_;
-	std::vector<std::shared_ptr<Shape>> shapes_;
 	std::vector<std::shared_ptr<Entity>> entities_;
 	std::unique_ptr<CollisionDetector> collisionDetector_;
 };

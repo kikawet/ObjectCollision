@@ -1,7 +1,7 @@
 #include "SpatialHash.h"
 
 SpatialHash::SpatialHash(const sf::Vector2f& bMin, const sf::Vector2f& bMax, const sf::Vector2i& dimensions) :
-	cells_(dimensions.x * dimensions.y, nullptr),
+	cells_(dimensions.x* dimensions.y, nullptr),
 	dimensions_(dimensions),
 	boundsMin_(bMin),
 	boundsMax_(bMax),
@@ -13,8 +13,8 @@ SpatialHash::~SpatialHash()
 {
 }
 
-std::shared_ptr<Entity> SpatialHash::addEntity(std::shared_ptr<Shape>& s)
-{	
+std::shared_ptr<Entity> SpatialHash::addEntity(std::unique_ptr<Shape>& s)
+{
 	std::shared_ptr<SpatialHashEntity> client = std::make_shared<SpatialHashEntity>(s);
 
 	this->insert(client);
@@ -28,13 +28,13 @@ bool SpatialHash::updateEntity(const std::shared_ptr<Entity>& e)
 
 	const sf::FloatRect& aabb = e->getBounds();
 
-	const sf::Vector2i& indexTL = this->getCellIndex({ aabb.left , aabb.top});
-	const sf::Vector2i& indexBR = this->getCellIndex({ aabb.left + aabb.width, aabb.top + aabb.height});
+	const sf::Vector2i& indexTL = this->getCellIndex({ aabb.left , aabb.top });
+	const sf::Vector2i& indexBR = this->getCellIndex({ aabb.left + aabb.width, aabb.top + aabb.height });
 
 
 	if (she->getTLIndex() == indexTL && she->getBRIndex() == indexBR)
 		return false;
-		
+
 	this->removeEntity(e);
 	this->insert(she);
 
@@ -92,7 +92,7 @@ bool SpatialHash::removeEntity(const std::shared_ptr<Entity>& e)
 			const int index = x * this->dimensions_.x + y;
 			const auto& node = she->getNode(relativeIndex);
 
-			if (node->next) 
+			if (node->next)
 				node->next->prev = node->prev;
 
 			if (node->prev)
@@ -152,7 +152,7 @@ void SpatialHash::show(sf::RenderWindow& rw)
 	);
 
 	cell.setSize(size);
-	cell.setFillColor(sf::Color(0,0,255,128));
+	cell.setFillColor(sf::Color(0, 0, 255, 128));
 
 	for (size_t x = 0; x < dimensions_.x; ++x)
 	{
@@ -203,8 +203,8 @@ bool SpatialHash::insert(const std::shared_ptr<SpatialHashEntity>& she)
 	const sf::Vector2i indexTL = getCellIndex({ aabb.left, aabb.top });
 	const sf::Vector2i indexBR = getCellIndex({ aabb.left + aabb.width, aabb.top + aabb.height });
 
-	const sf::IntRect gridDimensions(indexTL.x, indexTL.y, indexBR.x-indexTL.x+1, indexBR.y-indexTL.y+1);
-		
+	const sf::IntRect gridDimensions(indexTL.x, indexTL.y, indexBR.x - indexTL.x + 1, indexBR.y - indexTL.y + 1);
+
 	she->reserveNodes(gridDimensions.width * gridDimensions.height);
 	int index = 0;
 

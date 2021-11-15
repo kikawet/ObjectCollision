@@ -10,7 +10,7 @@ const sf::Vector2f& Entity::getPosition()
 	return this->entity_->getPosition();
 }
 
-const std::shared_ptr<Shape>& Entity::getShape()
+const std::unique_ptr<Shape>& Entity::getShape()
 {
 	return this->entity_;
 }

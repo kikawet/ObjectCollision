@@ -10,7 +10,7 @@ public:
 	SpatialHash(const sf::Vector2f& bMin, const sf::Vector2f& bMax, const sf::Vector2i& dimensions);
 	virtual ~SpatialHash();
 
-	std::shared_ptr<Entity> addEntity(std::shared_ptr<Shape>& s) override;
+	std::shared_ptr<Entity> addEntity(std::unique_ptr<Shape>& s) override;
 	bool updateEntity(const std::shared_ptr<Entity>& entity) override;
 	std::vector<std::shared_ptr<Entity>> detectCollision(const std::shared_ptr<Entity>& entity) override;
 	bool removeEntity(const std::shared_ptr<Entity>& entity) override;

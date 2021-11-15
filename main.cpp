@@ -18,7 +18,7 @@ int main()
 	//Setup framerate clock
 	sf::Clock clock;
 	sf::Time accumulator = sf::Time::Zero;
-	sf::Time updatesPerSecond = sf::seconds(1.f/60.f);
+	sf::Time updatesPerSecond = sf::seconds(1.f / 60.f);
 
 	//Setup Scene
 	sf::RenderWindow window(sf::VideoMode(WINDOW.width, WINDOW.height), "Circle Collision");
@@ -28,9 +28,9 @@ int main()
 			sf::Vector2f(WINDOW.left + WINDOW.width, WINDOW.top + WINDOW.height),
 			sf::Vector2i(50, 50) //must divide the size
 			)
-		);
-	
-	
+	);
+
+
 	//Main loop
 	while (window.isOpen())
 	{
