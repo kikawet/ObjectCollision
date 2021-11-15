@@ -16,7 +16,7 @@ sf::IntRect WINDOW(
 int main()
 {
 	//Setup framerate clock
-	sf::Clock clock;
+	sf::Clock clock, elapsedTime;
 	sf::Time accumulator = sf::Time::Zero;
 	sf::Time updatesPerSecond = sf::seconds(1.f / 60.f);
 
@@ -30,16 +30,18 @@ int main()
 			)
 	);
 
+	// Reset clock
+	elapsedTime.restart();
 
 	//Main loop
 	while (window.isOpen())
 	{
-		sh.processEvents();
+		sh.processEvents();		
 
 		while (accumulator > updatesPerSecond) {
 			accumulator -= updatesPerSecond;
 
-			sh.update(updatesPerSecond); // @TODO test if elapsed time is a better choice
+			sh.update(elapsedTime.restart());
 		}
 
 		sh.render();

@@ -158,7 +158,6 @@
     <ClInclude Include="CollisionResolver.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="SimulationHandler.h" />
-    <ClInclude Include="main.h" />
     <ClInclude Include="SpatialHashEntity.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="SpatialHash.h" />
