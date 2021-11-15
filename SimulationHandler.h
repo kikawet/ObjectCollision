@@ -1,9 +1,6 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <memory>
-#include "Shape.h"
-#include "Entity.h"
 #include "CollisionDetector.h"
 
 class SimulationHandler

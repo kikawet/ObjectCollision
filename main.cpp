@@ -1,10 +1,5 @@
-#include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Shape.h"
-#include <vector>
-#include "Ball.h"
 #include <memory>
-#include "CollisionDetector.h"
 #include "SpatialHash.h"
 #include "SimulationHandler.h"
 
@@ -16,7 +11,7 @@ sf::IntRect WINDOW(
 int main()
 {
 	//Setup framerate clock
-	sf::Clock clock, elapsedTime;
+	sf::Clock clock;
 	sf::Time accumulator = sf::Time::Zero;
 	sf::Time updatesPerSecond = sf::seconds(1.f / 60.f);
 
@@ -24,14 +19,14 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(WINDOW.width, WINDOW.height), "Circle Collision");
 	SimulationHandler sh(window,
 		std::make_unique<SpatialHash>(
-			sf::Vector2f(WINDOW.left, WINDOW.top),
-			sf::Vector2f(WINDOW.left + WINDOW.width, WINDOW.top + WINDOW.height),
+			sf::Vector2f((float)WINDOW.left, (float)WINDOW.top),
+			sf::Vector2f((float)WINDOW.left + WINDOW.width, (float)WINDOW.top + WINDOW.height),
 			sf::Vector2i(50, 50) //must divide the size
-			)
+		)
 	);
 
 	// Reset clock
-	elapsedTime.restart();
+	clock.restart();
 
 	//Main loop
 	while (window.isOpen())
@@ -41,7 +36,7 @@ int main()
 		while (accumulator > updatesPerSecond) {
 			accumulator -= updatesPerSecond;
 
-			sh.update(elapsedTime.restart());
+			sh.update(clock.getElapsedTime());
 		}
 
 		sh.render();

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include <SFML/System/Vector2.hpp>
 #include "Shape.h"
 

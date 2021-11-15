@@ -1,8 +1,6 @@
 #pragma once
 
-#include "Shape.h"
 #include "Entity.h"
-#include <memory>
 
 class CollisionDetector
 {
