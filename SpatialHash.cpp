@@ -146,12 +146,12 @@ void SpatialHash::show(sf::RenderWindow& rw)
 	}
 
 	sf::RectangleShape cell;
-	const sf::Vector2f size = sf::Vector2f(
+	const sf::Vector2f cellSize = sf::Vector2f(
 		(boundsMax_.x - boundsMin_.x) / dimensions_.x,
 		(boundsMax_.y - boundsMin_.y) / dimensions_.y
 	);
 
-	cell.setSize(size);
+	cell.setSize(cellSize);
 	cell.setFillColor(sf::Color(0, 0, 255, 128));
 
 	for (size_t x = 0; x < dimensions_.x; ++x)
@@ -161,8 +161,8 @@ void SpatialHash::show(sf::RenderWindow& rw)
 
 			if (cells_[current]) {
 				const sf::Vector2f offset = sf::Vector2f(
-					size.x * x,
-					size.y * y
+					cellSize.x * x,
+					cellSize.y * y
 				);
 
 				cell.setPosition(boundsMin_ + offset + vlThick);

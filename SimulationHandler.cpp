@@ -3,8 +3,9 @@
 #include "Ball.h"
 
 SimulationHandler::SimulationHandler(sf::RenderWindow& rw, std::unique_ptr<CollisionDetector>&& cd) :
-	//rw_(rw)
-	entities_()
+	entities_(),
+	randomGen_(std::random_device()()),// set random seed
+	random_(0.f,1.f) // set range of values
 {
 	rw_ = &rw;
 	collisionDetector_ = std::move(cd);
@@ -14,7 +15,6 @@ SimulationHandler::SimulationHandler(sf::RenderWindow& rw, std::unique_ptr<Colli
 	std::unique_ptr<Shape> pShape = std::make_unique<Ball>(sf::Vector2f({ 120,230 }));
 	entities_.push_back(collisionDetector_->addEntity(pShape));
 	entities_.back()->getShape()->applyForce({ 10, 0 });
-	//entities_.back()->getShape()->show(*rw_);
 }
 
 void SimulationHandler::processEvents()
@@ -28,11 +28,17 @@ void SimulationHandler::processEvents()
 			rw_->close();
 		else if (event.type == event.MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
 
-			// Add a new ball
-			std::unique_ptr<Shape> pShape = std::make_unique<Ball>(sf::Vector2f({ 120,230 }));
-			entities_.push_back(collisionDetector_->addEntity(pShape));
-			entities_.back()->getShape()->applyForce({ 10, 0 });
-			//entities_.back()->getShape()->show(*rw_);
+			for (size_t i = 0; i < 10; i++)
+			{
+				const float randomY = 230 + this->getRandom() * 50.f;
+				const float randomX = 120 + this->getRandom() * 50.f;
+
+				// Add a new ball
+				std::unique_ptr<Shape> pShape = std::make_unique<Ball>(sf::Vector2f({ randomX, randomY}));
+				entities_.push_back(collisionDetector_->addEntity(pShape));
+				entities_.back()->getShape()->applyForce({ 10, 0 });
+			}
+
 		}
 
 	}
@@ -52,10 +58,13 @@ void SimulationHandler::render()
 	collisionDetector_->show(*rw_);
 
 	for (auto& entity : entities_) {
-		//entity->getShape()->update(1.f / 60);
-		//collisionDetector_->updateEntity(entity);
 		entity->getShape()->show(*rw_);
 	}
 
 	rw_->display();
+}
+
+double SimulationHandler::getRandom()
+{
+	return this->random_(this->randomGen_);
 }

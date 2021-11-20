@@ -17,9 +17,8 @@ void Shape::applyForce(sf::Vector2f f)
 
 void Shape::update(sf::Time dt)
 {
-	// @TODO - Decrease acceleration aka add air resistance or related
+	const float dumping = 0.7f;
 
-	this->velocity_ += this->acceletarion_ * dt.asSeconds();
+	this->velocity_ += this->acceletarion_ * dt.asSeconds() * dumping;
 	this->shape_->move(this->velocity_ * dt.asSeconds());
-
 }

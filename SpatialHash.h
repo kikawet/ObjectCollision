@@ -12,7 +12,7 @@ public:
 
 	std::shared_ptr<Entity> addEntity(std::unique_ptr<Shape>& s) override;
 	bool updateEntity(const std::shared_ptr<Entity>& entity) override;
-	std::vector<std::shared_ptr<Entity>> detectCollision(const std::shared_ptr<Entity>& entity) override;
+	std::vector<std::shared_ptr<Entity>> detectCollision(const std::shared_ptr<Entity>& entity) override; //!< This functions always returns at least one entity
 	bool removeEntity(const std::shared_ptr<Entity>& entity) override;
 	void show(sf::RenderWindow& rw);
 

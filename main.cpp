@@ -36,7 +36,7 @@ int main()
 		while (accumulator > updatesPerSecond) {
 			accumulator -= updatesPerSecond;
 
-			sh.update(clock.getElapsedTime());
+			sh.update(updatesPerSecond);
 		}
 
 		sh.render();
