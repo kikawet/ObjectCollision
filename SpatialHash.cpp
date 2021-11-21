@@ -24,7 +24,7 @@ std::shared_ptr<Entity> SpatialHash::addEntity(std::unique_ptr<Shape>& s)
 
 bool SpatialHash::updateEntity(const std::shared_ptr<Entity>& e)
 {
-	std::shared_ptr<SpatialHashEntity> she = std::dynamic_pointer_cast<SpatialHashEntity>(e);
+	std::shared_ptr<SpatialHashEntity> she = std::static_pointer_cast<SpatialHashEntity>(e);
 
 	const sf::FloatRect& aabb = e->getBounds();
 
@@ -78,7 +78,7 @@ std::vector<std::shared_ptr<Entity>> SpatialHash::detectCollision(const std::sha
 
 bool SpatialHash::removeEntity(const std::shared_ptr<Entity>& e)
 {
-	std::shared_ptr<SpatialHashEntity> she = std::dynamic_pointer_cast<SpatialHashEntity>(e);
+	std::shared_ptr<SpatialHashEntity> she = std::static_pointer_cast<SpatialHashEntity>(e);
 
 	if (she->getTLIndex().x == -1)
 		return false;

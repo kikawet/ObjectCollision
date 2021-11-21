@@ -25,6 +25,7 @@ SimulationHandler::SimulationHandler(sf::RenderWindow& rw, std::unique_ptr<Colli
 		// Add a new ball
 		std::unique_ptr<Shape> pShape = std::make_unique<Ball>(sf::Vector2f({ randomX, randomY }));
 		entities_.push_back(collisionDetector_->addEntity(pShape));
+		entities_.back()->getShape()->applyForce({ 10, 0 });
 	}
 	
 }
@@ -42,8 +43,8 @@ void SimulationHandler::processEvents()
 
 			for (size_t i = 0; i < 10; i++)
 			{
-				const float randomY = 230 + this->getRandom() * 50.f;
-				const float randomX = 120 + this->getRandom() * 50.f;
+				const float randomY = 230 + this->getRandom() * 200.f;
+				const float randomX = 120 + this->getRandom() * 200.f;
 
 				// Add a new ball
 				std::unique_ptr<Shape> pShape = std::make_unique<Ball>(sf::Vector2f({ randomX, randomY}));
