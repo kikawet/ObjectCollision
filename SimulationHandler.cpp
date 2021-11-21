@@ -1,6 +1,7 @@
 #include "SimulationHandler.h"
 #include "SpatialHash.h"
 #include "Ball.h"
+#include "Utils.h"
 
 SimulationHandler::SimulationHandler(sf::RenderWindow& rw, std::unique_ptr<CollisionDetector>&& cd) :
 	entities_(),
@@ -12,9 +13,20 @@ SimulationHandler::SimulationHandler(sf::RenderWindow& rw, std::unique_ptr<Colli
 
 	// Add an initial object
 	// @TODO remove this temp code
-	std::unique_ptr<Shape> pShape = std::make_unique<Ball>(sf::Vector2f({ 120,230 }));
+	/*std::unique_ptr<Shape> pShape = std::make_unique<Ball>(sf::Vector2f({ 120,230 }));
 	entities_.push_back(collisionDetector_->addEntity(pShape));
-	entities_.back()->getShape()->applyForce({ 10, 0 });
+	entities_.back()->getShape()->applyForce({ 10, 0 });*/
+
+	for (size_t i = 0; i < 5; i++)
+	{
+		const float randomY = 230 + this->getRandom() * 200.f;
+		const float randomX = 120 + this->getRandom() * 200.f;
+
+		// Add a new ball
+		std::unique_ptr<Shape> pShape = std::make_unique<Ball>(sf::Vector2f({ randomX, randomY }));
+		entities_.push_back(collisionDetector_->addEntity(pShape));
+	}
+	
 }
 
 void SimulationHandler::processEvents()
