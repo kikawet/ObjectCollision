@@ -1,8 +1,8 @@
 #include "Entity.h"
 
-const sf::FloatRect& Entity::getBounds()
+sf::FloatRect Entity::getBounds()
 {
-	return this->entity_->getBounds();
+	return std::move(this->entity_->getBounds());
 }
 
 const sf::Vector2f& Entity::getPosition()

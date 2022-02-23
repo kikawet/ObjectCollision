@@ -6,7 +6,7 @@
 class Entity
 {
 public:
-	const sf::FloatRect& getBounds();
+	sf::FloatRect getBounds();
 	const sf::Vector2f& getPosition();
 	const std::unique_ptr<Shape>& getShape();
 	virtual ~Entity();

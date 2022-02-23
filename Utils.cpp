@@ -6,7 +6,7 @@ std::vector<std::pair<std::shared_ptr<Entity>, std::shared_ptr<Entity>>> Utils::
     std::vector<std::vector<std::shared_ptr<Entity>>> result;
 
     bool hasFinished = entities.size() < 1 || permutationLength > entities.size();
-    std::vector<int> currentPermutation(permutationLength);
+    std::vector<size_t> currentPermutation(permutationLength);
 
     for (size_t i = 1; i <= permutationLength; ++i)
     {
@@ -28,7 +28,7 @@ std::vector<std::pair<std::shared_ptr<Entity>, std::shared_ptr<Entity>>> Utils::
 
         for (int i = permutationLength - 1; i >= 0; --i)
             if (currentPermutation[i] < entities.size() - permutationLength + i + 1) {
-                int j = currentPermutation[i] + 1;
+                size_t j = currentPermutation[i] + 1;
                 while (i <= permutationLength - 1)
                     currentPermutation[i++] = j++;
 

@@ -1,8 +1,8 @@
 #include "Shape.h"
 
-const sf::FloatRect& Shape::getBounds()
+sf::FloatRect Shape::getBounds()
 {
-	return this->shape_->getGlobalBounds();
+	return std::move(this->shape_->getGlobalBounds());
 }
 
 const sf::Vector2f& Shape::getPosition()

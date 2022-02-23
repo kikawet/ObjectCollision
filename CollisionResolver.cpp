@@ -16,4 +16,5 @@ bool CollisionResolver::handleCollision(const std::vector<std::shared_ptr<Entity
 
 	// @TODO: apply repulsion forces
 
+	return false;
 }

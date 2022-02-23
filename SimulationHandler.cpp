@@ -43,8 +43,8 @@ void SimulationHandler::processEvents()
 
 			for (size_t i = 0; i < 10; i++)
 			{
-				const float randomY = 230 + this->getRandom() * 200.f;
-				const float randomX = 120 + this->getRandom() * 200.f;
+				const float randomY = 230.f + this->getRandom() * 200.f;
+				const float randomX = 120.f + this->getRandom() * 200.f;
 
 				// Add a new ball
 				std::unique_ptr<Shape> pShape = std::make_unique<Ball>(sf::Vector2f({ randomX, randomY}));
@@ -77,7 +77,7 @@ void SimulationHandler::render()
 	rw_->display();
 }
 
-double SimulationHandler::getRandom()
+float SimulationHandler::getRandom()
 {
 	return this->random_(this->randomGen_);
 }

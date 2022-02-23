@@ -14,12 +14,12 @@ public:
 	void render();
 
 private:
-	double getRandom();
+	float getRandom();
 
 	sf::RenderWindow* rw_;
 	std::vector<std::shared_ptr<Entity>> entities_;
 	std::unique_ptr<CollisionDetector> collisionDetector_;
 	std::mt19937_64 randomGen_;
-	std::uniform_real_distribution<> random_;
+	std::uniform_real_distribution<float> random_;
 };
 

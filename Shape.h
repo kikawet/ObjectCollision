@@ -9,7 +9,7 @@ class Shape
 public:
 	virtual ~Shape() = default;
 
-	const sf::FloatRect& getBounds();
+	sf::FloatRect getBounds();
 	const sf::Vector2f& getPosition();
 	virtual void applyForce(sf::Vector2f f);
 	virtual void update(sf::Time dt);
