@@ -18,6 +18,29 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Ball.h" />
+    <ClInclude Include="include\CollisionDetector.h" />
+    <ClInclude Include="include\CollisionResolver.h" />
+    <ClInclude Include="include\Entity.h" />
+    <ClInclude Include="include\Shape.h" />
+    <ClInclude Include="include\SimulationHandler.h" />
+    <ClInclude Include="include\SpatialHash.h" />
+    <ClInclude Include="include\SpatialHashEntity.h" />
+    <ClInclude Include="include\Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\Ball.cpp" />
+    <ClCompile Include="src\CollisionDetector.cpp" />
+    <ClCompile Include="src\CollisionResolver.cpp" />
+    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\Shape.cpp" />
+    <ClCompile Include="src\SimulationHandler.cpp" />
+    <ClCompile Include="src\SpatialHash.cpp" />
+    <ClCompile Include="src\SpatialHashEntity.cpp" />
+    <ClCompile Include="src\Utils.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -78,6 +101,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(ProjectDir)\include;$(IncludePath)</IncludePath>
+    <SourcePath>$(ProjectDir)\src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -141,29 +166,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="CollisionDetector.cpp" />
-    <ClCompile Include="CollisionResolver.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="SimulationHandler.cpp" />
-    <ClCompile Include="SpatialHashEntity.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Shape.cpp" />
-    <ClCompile Include="SpatialHash.cpp" />
-    <ClCompile Include="Utils.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Ball.h" />
-    <ClInclude Include="CollisionDetector.h" />
-    <ClInclude Include="CollisionResolver.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="SimulationHandler.h" />
-    <ClInclude Include="SpatialHashEntity.h" />
-    <ClInclude Include="Shape.h" />
-    <ClInclude Include="SpatialHash.h" />
-    <ClInclude Include="Utils.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
