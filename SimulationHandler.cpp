@@ -11,8 +11,8 @@ SimulationHandler::SimulationHandler(sf::RenderWindow& rw, std::unique_ptr<Colli
 	rw_ = &rw;
 	collisionDetector_ = std::move(cd);
 
+	// @TODO: Generate N balls at random places
 	// Add an initial object
-	// @TODO remove this temp code
 	/*std::unique_ptr<Shape> pShape = std::make_unique<Ball>(sf::Vector2f({ 120,230 }));
 	entities_.push_back(collisionDetector_->addEntity(pShape));
 	entities_.back()->getShape()->applyForce({ 10, 0 });*/
