@@ -1,0 +1,4 @@
+#pragma once
+#define ObjectCollision_VERSION_MAJOR @ObjectCollision_VERSION_MAJOR@ 
+#define ObjectCollision_VERSION_MINOR @ObjectCollision_VERSION_MINOR@ 
+// #define RESOURCE_PATH "@RESOURCE_PATH@"
