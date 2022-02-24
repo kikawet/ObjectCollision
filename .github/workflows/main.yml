@@ -50,8 +50,9 @@ jobs:
           echo "$HOME/.sonar/build-wrapper-linux-x86" >> $GITHUB_PATH
       - name: Run build-wrapper
         run: |
-          mkdir build
-          cd build
+          mkdir ./build
+          cd ./build
+          cmake --configure .
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} cmake --build . --target all
       - name: Run sonar-scanner
         env:
