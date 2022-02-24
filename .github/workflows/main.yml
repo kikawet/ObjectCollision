@@ -51,9 +51,9 @@ jobs:
       - name: Run build-wrapper
         run: |
           mkdir ./build
-          ls -la
           cd ./build
           cmake ..
+          echo cmade
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} make
       - name: Run sonar-scanner
         env:
