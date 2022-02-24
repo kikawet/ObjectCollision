@@ -1,4 +1,5 @@
 #include "SpatialHash.h"
+#include <cmath>
 
 SpatialHash::SpatialHash(const sf::Vector2f& bMin, const sf::Vector2f& bMax, const sf::Vector2i& dimensions) :
 	cells_(dimensions.x* dimensions.y, nullptr),
